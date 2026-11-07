@@ -1,0 +1,107 @@
+@import "@fontsource-variable/archivo/wdth.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+@import "@fontsource/jetbrains-mono/700.css";
+@import "tailwindcss";
+
+/* Tokens de diseño: papel, tinta y un solo acento. */
+@theme {
+  --color-paper: #f4f2ee;
+  --color-paper-dark: #e8e5df;
+  --color-ink: #141414;
+  --color-ink-soft: #55524c; /* texto secundario: 7:1 sobre paper */
+  --color-rule: #cfcac1; /* líneas internas más suaves que la tinta */
+  --color-accent: #ff4f00; /* solo superficies chicas, nunca texto chico */
+  --color-accent-ink: #b83800; /* versión para texto: 5.2:1 sobre paper (AA) */
+
+  --font-sans: "Archivo Variable", "Archivo", "Arial Narrow", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+
+/* Contenedor de página: ancho máximo y margen lateral (16px en mobile). */
+@utility shell {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 90rem;
+  padding-inline: 1rem;
+  @media (min-width: 48rem) {
+    padding-inline: 2rem;
+  }
+}
+
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent-ink);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Etiqueta monoespaciada: "PROYECTO 01 / WEB / PÚBLICO" */
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.4;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* Placeholder rayado para imágenes que todavía no existen */
+  .stripes {
+    background-color: var(--color-paper-dark);
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent 0 10px,
+      rgb(20 20 20 / 0.07) 10px 11px
+    );
+  }
+
+  /* Aparición al hacer scroll (ver components/Reveal.jsx) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 500ms ease-out,
+      transform 500ms ease-out;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Cambio de captura en el índice de proyectos */
+  .fade-in {
+    animation: fade-in 200ms ease-out;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

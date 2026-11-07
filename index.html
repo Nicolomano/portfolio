@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f2ee" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Valores por defecto. Cada página actualiza title y description (hooks/usePageMeta.js). -->
+    <title>Nicolás Romano · Desarrollador full-stack</title>
+    <meta
+      name="description"
+      content="Desarrollador full-stack MERN en Buenos Aires. E-commerce de 3.600+ productos y PWA de stock en producción para A&amp;P Refrigeración, la casa de repuestos donde trabajo."
+    />
+
+    <!-- Open Graph: los scrapers no ejecutan JS, por eso va estático. -->
+    <!-- TODO: cuando tengas dominio, cambiar og:url y usar URL absoluta en og:image. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:title" content="Nicolás Romano · Desarrollador full-stack" />
+    <meta
+      property="og:description"
+      content="E-commerce con 3.600+ productos, buscador tolerante a errores y 180+ pruebas automatizadas, más una PWA de stock. En producción para una casa de repuestos de refrigeración."
+    />
+    <meta property="og:image" content="/og.png" />
+    <meta property="og:url" content="https://TODO-tu-dominio.vercel.app" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
