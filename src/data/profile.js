@@ -7,7 +7,7 @@ const profile = {
   availability: "Full time · presencial, remoto o híbrido",
   email: "nicoezequielromano98@gmail.com",
   linkedin: "https://www.linkedin.com/in/nicolasromano3515",
-  github: null, // TODO: "https://github.com/tu-usuario"
+  github: "https://github.com/Nicolomano",
   cv: {
     es: "/cv/cv-nicolas-romano-es.pdf",
     en: "/cv/cv-nicolas-romano-en.pdf",
