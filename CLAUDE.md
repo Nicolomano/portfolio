@@ -93,8 +93,10 @@ scripts/        sitemap.mjs (genera public/sitemap.xml antes del build)
 ## Fuentes de datos
 
 - Los CVs de `public/cv/` son fuente válida de fechas y datos para el sitio (los `.docx` editables no están en el repo).
+- [x] Las 180+ pruebas del v2 existen: `Backend/src/scripts/__test-*.mjs` (171) y `frontend/scripts/__test-seo.mjs` (28), con `mongodb-memory-server`, sin Jest.
 - [x] `repoUrl` del v1 (`Nicolomano/catalogoAyp`) y del v2 (`Nicolomano/catalogo-ayp-v2`). Los `.env` del historial se revisaron: solo tenían valores de ejemplo o de desarrollo, no claves reales. En el v1 se dejaron de versionar (rama `claude/preview-o90NN`, la única que los tenía). La PWA (`stock-api`) es privada: no linkear.
-- [ ] El repo del v1 no tiene README en `main` y el del v2 tiene uno corto: conviene mejorarlos, porque es lo primero que ve quien entra desde el portfolio.
+- [x] README en los dos repos del catálogo (qué hace, decisiones, stack, cómo correrlo; el del v2 también las pruebas). El del v2 está en `main`; el del v1, en la rama `claude/preview-o90NN`.
+- [ ] Repo del v1: `main` está 12 commits atrás de `claude/preview-o90NN` (ahí están la migración a R2, el CMS y el README que describe el portfolio). Falta actualizar `main` con un fast-forward: `git push origin origin/claude/preview-o90NN:main` desde el repo `catalogoAyp`. Puede disparar un redeploy de catalogoayp.vercel.app.
 
 ## Comandos
 
