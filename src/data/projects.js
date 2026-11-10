@@ -201,7 +201,7 @@ const projects = [
     type: "E-commerce",
     private: false,
     featured: true,
-    year: "2025",
+    year: "2026",
     role: "Diseño y desarrollo full-stack",
     status: "En producción",
     evolutionNote:

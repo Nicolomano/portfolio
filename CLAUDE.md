@@ -66,7 +66,7 @@ src/lib/        projects.js (pad, número y etiqueta "Proyecto 02 / E-commerce /
 - [x] Capturas del catálogo v1 (`catalogo-basico-{listado,detalle,kit}.jpg`), sacadas con puppeteer de catalogoayp.vercel.app con scroll para no mostrar el banner de "fuera de servicio".
 - [x] catalogoayp.vercel.app se va a dar de baja (ya muestra un banner de "fuera de servicio"): el v1 quedó con `liveUrl: null`, etiqueta "Archivado" y botón a la v2 (campo `successor`).
 - [x] Capturas de la PWA: 6 JPG de celular en `public/img/pwa-stock-*.jpg` (buscar, ajuste, carga, movimiento, faltantes, traer). `video: null`. Muestran nombres de usuario de empleados (no de clientes).
-- [x] Años: v1 2024, v2 2025, PWA 2026 (primer commit de `stock-api`: 8/7/2026).
+- [x] Años (confirmados por Nicolás): v1 2024, v2 2026, PWA 2026.
 - [x] Caso de la PWA reescrito y verificado contra su repo (`Nicolomano/stock-api`, **privado**: no linkearlo). Impacto cualitativo; si aparece un dato medible (ej. cantidad de cargas), sumarlo.
 - [x] PWA: antes había 4 computadoras para todo el equipo (muchas más personas) y una computadora no deja moverse por el depósito. El nombre queda "PWA Stock".
 - [x] Métricas de la PWA: el "500 por lote" era del catálogo v2 (bulkWrite en lotes de 500), se movió ahí como desafío. La PWA quedó con "2 depósitos separados" y "3–4 computadoras compartidas antes de la app" (datos del CV).
