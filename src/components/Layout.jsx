@@ -3,10 +3,12 @@ import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { useI18n } from "../i18n/index.js";
+import useAlternateLinks from "../hooks/useAlternateLinks.js";
 
 export default function Layout() {
   const { pathname } = useLocation();
   const { lang, t } = useI18n();
+  useAlternateLinks();
 
   // Al cambiar de página, volver arriba.
   useEffect(() => {

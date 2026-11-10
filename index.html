@@ -13,18 +13,33 @@
       content="Desarrollador full-stack MERN en Buenos Aires. E-commerce de 3.900+ productos y PWA de stock en producción para A&amp;P Refrigeración, la casa de repuestos donde trabajo."
     />
 
-    <!-- Open Graph: los scrapers no ejecutan JS, por eso va estático. -->
-    <!-- TODO: cuando tengas dominio, cambiar og:url y usar URL absoluta en og:image. -->
+    <!-- Canónica y versiones por idioma del inicio. Cada página las actualiza
+         (hooks/useAlternateLinks.js); el resto está en /sitemap.xml. -->
+    <link rel="canonical" href="https://nicolasromano.vercel.app/" />
+    <link rel="alternate" hreflang="es" href="https://nicolasromano.vercel.app/" />
+    <link rel="alternate" hreflang="en" href="https://nicolasromano.vercel.app/en" />
+    <link rel="alternate" hreflang="x-default" href="https://nicolasromano.vercel.app/" />
+
+    <!-- Open Graph: los scrapers no ejecutan JS, por eso va estático (y en español). -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nicolás Romano" />
     <meta property="og:locale" content="es_AR" />
+    <meta property="og:locale:alternate" content="en_US" />
     <meta property="og:title" content="Nicolás Romano · Desarrollador full-stack" />
     <meta
       property="og:description"
       content="E-commerce con 3.900+ productos, buscador tolerante a errores y 180+ pruebas automatizadas, más una PWA de stock. En producción para una casa de repuestos de refrigeración."
     />
-    <meta property="og:image" content="/og.png" />
-    <meta property="og:url" content="https://TODO-tu-dominio.vercel.app" />
+    <meta property="og:url" content="https://nicolasromano.vercel.app/" />
+    <meta property="og:image" content="https://nicolasromano.vercel.app/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Nicolás Romano, desarrollador full-stack MERN: hice el e-commerce y la app de stock de la casa de repuestos donde trabajo."
+    />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://nicolasromano.vercel.app/og.png" />
   </head>
   <body>
     <div id="root"></div>

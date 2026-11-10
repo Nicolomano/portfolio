@@ -1,7 +1,7 @@
 # Contexto del proyecto
 
 Portfolio de **Nicolás Romano**, desarrollador full-stack MERN junior en Buenos Aires.
-Repo: https://github.com/Nicolomano/portfolio · Deploy previsto en Vercel (`vercel.json` ya tiene el rewrite SPA).
+Repo: https://github.com/Nicolomano/portfolio · Publicado en https://nicolasromano.vercel.app (Vercel, deploy automático al hacer push a `main`).
 
 Este archivo existe para retomar el trabajo desde otra PC o en otra sesión. Leelo entero antes de tocar algo.
 
@@ -43,9 +43,10 @@ src/components/ Shot (imagen/video con placeholder rayado si falta), PhoneFrame 
                 ProjectCover, ProjectCard (resumen de caso en Home), Reveal, SpecList,
                 SectionHeader, Cta, Layout, Navbar, Footer
 src/pages/      Home, Projects (índice con preview en hover), ProjectDetail, About, Contact, NotFound
-src/hooks/      usePageMeta (title + meta description por página)
+src/hooks/      usePageMeta (title + meta description por página), useAlternateLinks (canónica + hreflang)
 src/lib/        projects.js (pad, número, etiqueta "Proyecto 02 / E-commerce / Público", getProjects(lang))
-src/i18n/       index.js (rutas por idioma, useI18n, switchLangPath), ui.js (textos de la interfaz es/en)
+src/i18n/       paths.js (SITE_URL y rutas por idioma, sin React), index.js (useI18n, switchLangPath), ui.js (textos es/en)
+scripts/        sitemap.mjs (genera public/sitemap.xml antes del build)
 ```
 
 - Rutas en español: `/`, `/proyectos`, `/proyectos/:slug` (slug = `id` del proyecto), `/sobre-mi`, `/contacto`, `*`.
@@ -71,7 +72,9 @@ src/i18n/       index.js (rutas por idioma, useI18n, switchLangPath), ui.js (tex
 
 ## Pendientes
 
-- [ ] Deploy en Vercel; después cambiar `og:url` y `og:image` (URL absoluta) en `index.html`.
+- [x] Deploy en https://nicolasromano.vercel.app. `og:url` y `og:image` absolutos en `index.html`.
+- [x] SEO: `robots.txt`, `sitemap.xml` generado en cada build por `scripts/sitemap.mjs` (rutas de `src/i18n/paths.js` + proyectos), y canónica + hreflang por página (`hooks/useAlternateLinks.js`). Si cambia el dominio, cambiar `SITE_URL` en `src/i18n/paths.js`, `index.html` y `public/robots.txt`.
+- [x] Link del portfolio en los dos CVs (primero en la línea de contacto).
 - [x] `public/og.png`: captura del hero en 1200×630 (viewport 1270 px reescalado, sin el párrafo, los botones ni la franja de datos). Si cambia el hero, regenerarlo.
 - [x] CVs en `public/cv/`.
 - [x] Capturas del catálogo v1 (`catalogo-basico-{listado,detalle,kit}.jpg`), sacadas con puppeteer de catalogoayp.vercel.app con scroll para no mostrar el banner de "fuera de servicio".

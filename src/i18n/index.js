@@ -1,29 +1,14 @@
 import { useLocation } from "react-router-dom";
 import { getProjects } from "../lib/projects.js";
+import { getLang, paths, translatePath } from "./paths.js";
 import ui from "./ui.js";
 
-// Español en la raíz; inglés con el prefijo /en.
-export const paths = {
-  es: { home: "/", projects: "/proyectos", about: "/sobre-mi", contact: "/contacto" },
-  en: { home: "/en", projects: "/en/projects", about: "/en/about", contact: "/en/contact" },
-};
+export { getLang, paths, SITE_URL } from "./paths.js";
 
-export function getLang(pathname) {
-  return pathname === "/en" || pathname.startsWith("/en/") ? "en" : "es";
-}
-
-// La misma página en el otro idioma (los ids de proyecto no cambian).
+// La misma página en el otro idioma; si no es una página conocida, el inicio.
 export function switchLangPath(pathname) {
-  const from = getLang(pathname);
-  const to = from === "es" ? "en" : "es";
-  const current = pathname.length > 1 ? pathname.replace(/\/$/, "") : pathname;
-
-  const detailPrefix = `${paths[from].projects}/`;
-  if (current.startsWith(detailPrefix)) {
-    return `${paths[to].projects}/${current.slice(detailPrefix.length)}`;
-  }
-  const page = Object.keys(paths[from]).find((key) => paths[from][key] === current);
-  return paths[to][page ?? "home"];
+  const to = getLang(pathname) === "es" ? "en" : "es";
+  return translatePath(pathname, to) ?? paths[to].home;
 }
 
 // Idioma actual (según la URL), textos, rutas y proyectos traducidos.

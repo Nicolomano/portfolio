@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://nicolasromano.vercel.app/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nicolasromano.vercel.app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nicolasromano.vercel.app/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nicolasromano.vercel.app/"/>
+  </url>
+  <url>
+    <loc>https://nicolasromano.vercel.app/en</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nicolasromano.vercel.app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nicolasromano.vercel.app/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nicolasromano.vercel.app/"/>
+  </url>
+  <url>
+    <loc>https://nicolasromano.vercel.app/proyectos</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nicolasromano.vercel.app/proyectos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nicolasromano.vercel.app/en/projects"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nicolasromano.vercel.app/proyectos"/>
+  </url>
+  <url>
+    <loc>https://nicolasromano.vercel.app/en/projects</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nicolasromano.vercel.app/proyectos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nicolasromano.vercel.app/en/projects"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nicolasromano.vercel.app/proyectos"/>
+  </url>
+  <url>
+    <loc>https://nicolasromano.vercel.app/sobre-mi</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nicolasromano.vercel.app/sobre-mi"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nicolasromano.vercel.app/en/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nicolasromano.vercel.app/sobre-mi"/>
+  </url>
+  <url>
+    <loc>https://nicolasromano.vercel.app/en/about</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nicolasromano.vercel.app/sobre-mi"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nicolasromano.vercel.app/en/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nicolasromano.vercel.app/sobre-mi"/>
+  </url>
+  <url>
+    <loc>https://nicolasromano.vercel.app/contacto</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nicolasromano.vercel.app/contacto"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nicolasromano.vercel.app/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nicolasromano.vercel.app/contacto"/>
+  </url>
+  <url>
+    <loc>https://nicolasromano.vercel.app/en/contact</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nicolasromano.vercel.app/contacto"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nicolasromano.vercel.app/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nicolasromano.vercel.app/contacto"/>
+  </url>
+  <url>
+    <loc>https://nicolasromano.vercel.app/proyectos/catalogo-basico</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nicolasromano.vercel.app/proyectos/catalogo-basico"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nicolasromano.vercel.app/en/projects/catalogo-basico"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nicolasromano.vercel.app/proyectos/catalogo-basico"/>
+  </url>
+  <url>
+    <loc>https://nicolasromano.vercel.app/en/projects/catalogo-basico</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nicolasromano.vercel.app/proyectos/catalogo-basico"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nicolasromano.vercel.app/en/projects/catalogo-basico"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nicolasromano.vercel.app/proyectos/catalogo-basico"/>
+  </url>
+  <url>
+    <loc>https://nicolasromano.vercel.app/proyectos/catalogo-avanzado</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nicolasromano.vercel.app/proyectos/catalogo-avanzado"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nicolasromano.vercel.app/en/projects/catalogo-avanzado"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nicolasromano.vercel.app/proyectos/catalogo-avanzado"/>
+  </url>
+  <url>
+    <loc>https://nicolasromano.vercel.app/en/projects/catalogo-avanzado</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nicolasromano.vercel.app/proyectos/catalogo-avanzado"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nicolasromano.vercel.app/en/projects/catalogo-avanzado"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nicolasromano.vercel.app/proyectos/catalogo-avanzado"/>
+  </url>
+  <url>
+    <loc>https://nicolasromano.vercel.app/proyectos/pwa-stock</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nicolasromano.vercel.app/proyectos/pwa-stock"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nicolasromano.vercel.app/en/projects/pwa-stock"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nicolasromano.vercel.app/proyectos/pwa-stock"/>
+  </url>
+  <url>
+    <loc>https://nicolasromano.vercel.app/en/projects/pwa-stock</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://nicolasromano.vercel.app/proyectos/pwa-stock"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nicolasromano.vercel.app/en/projects/pwa-stock"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nicolasromano.vercel.app/proyectos/pwa-stock"/>
+  </url>
+</urlset>
