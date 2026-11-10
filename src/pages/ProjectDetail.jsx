@@ -128,6 +128,11 @@ export default function ProjectDetail() {
           Repositorio <span aria-hidden="true">↗</span>
         </Cta>
       )}
+      {project.successor && (
+        <Cta to={`/proyectos/${project.successor}`} variant="secondary">
+          Ver la versión actual <span aria-hidden="true">→</span>
+        </Cta>
+      )}
       {project.private && (
         <p className="label border border-ink px-4 py-3">
           <span aria-hidden="true" className="mr-2 inline-block size-2 bg-accent" />

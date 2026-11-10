@@ -19,6 +19,7 @@
 //   evolutionNote         → qué cambió respecto de la versión anterior
 //   video                 → archivo en public/video/ (opcional)
 //   repoUrl               → link al repositorio (opcional)
+//   successor             → id del proyecto que lo reemplazó (opcional); el detalle linkea a él
 //
 // Las imágenes se buscan en public/img/<file>.
 
@@ -77,7 +78,8 @@ const projects = [
     ],
     metrics: [{ value: "17", label: "Pull Requests mergeados" }],
     image: "catalogo-basico-listado.jpg",
-    liveUrl: "https://catalogoayp.vercel.app",
+    liveUrl: null, // catalogoayp.vercel.app se va a dar de baja
+    successor: "catalogo-avanzado",
     repoUrl: null, // TODO: el repo es público (Nicolomano/catalogoAyp); sumarlo después de revisar los .env del historial
     gallery: [
       {

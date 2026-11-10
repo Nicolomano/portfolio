@@ -48,6 +48,7 @@ src/lib/        projects.js (pad, número y etiqueta "Proyecto 02 / E-commerce /
 
 - Rutas: `/`, `/proyectos`, `/proyectos/:slug` (slug = `id` del proyecto), `/sobre-mi`, `/contacto`, `*`.
 - `ProjectDetail` arma las secciones según los campos que existan (`features`, `challenges`, `quality` son opcionales) y las numera solo.
+- `successor` (opcional): id del proyecto que lo reemplazó; el detalle muestra "Ver la versión actual". Sin `liveUrl` ni `private`, la etiqueta dice "Archivado".
 - Campos de proyecto: no renombrar los existentes (`id, title, shortDescription, fullDescription, problem, stack, image, liveUrl, gallery`). `gallery` es `[{ file, alt, phone? }]`.
 - Open Graph estático en `index.html` (los scrapers no ejecutan JS).
 
@@ -60,19 +61,19 @@ src/lib/        projects.js (pad, número y etiqueta "Proyecto 02 / E-commerce /
 ## Pendientes
 
 - [ ] Deploy en Vercel; después cambiar `og:url` y `og:image` (URL absoluta) en `index.html`.
-- [ ] `public/og.png` está vacío (0 bytes): reemplazar por imagen real 1200×630 (se puede capturar el hero a ese tamaño).
+- [x] `public/og.png`: captura del hero en 1200×630 (viewport 1270 px reescalado, sin el párrafo, los botones ni la franja de datos). Si cambia el hero, regenerarlo.
 - [x] CVs en `public/cv/`.
 - [x] Capturas del catálogo v1 (`catalogo-basico-{listado,detalle,kit}.jpg`), sacadas con puppeteer de catalogoayp.vercel.app con scroll para no mostrar el banner de "fuera de servicio".
-- [ ] catalogoayp.vercel.app muestra un banner de "PÁGINA FUERA DE SERVICIO, nueva página: refrigeracionayp.com". Decidir si el v1 mantiene el botón "Ver online".
+- [x] catalogoayp.vercel.app se va a dar de baja (ya muestra un banner de "fuera de servicio"): el v1 quedó con `liveUrl: null`, etiqueta "Archivado" y botón a la v2 (campo `successor`).
 - [x] Capturas de la PWA: 6 JPG de celular en `public/img/pwa-stock-*.jpg` (buscar, ajuste, carga, movimiento, faltantes, traer). `video: null`. Muestran nombres de usuario de empleados (no de clientes).
 - [x] Años: v1 2024, v2 2025, PWA 2026 (primer commit de `stock-api`: 8/7/2026).
 - [x] Caso de la PWA reescrito y verificado contra su repo (`Nicolomano/stock-api`, **privado**: no linkearlo). Impacto cualitativo; si aparece un dato medible (ej. cantidad de cargas), sumarlo.
 - [x] PWA: antes había 4 computadoras para todo el equipo (muchas más personas) y una computadora no deja moverse por el depósito. El nombre queda "PWA Stock".
 - [x] Métricas de la PWA: el "500 por lote" era del catálogo v2 (bulkWrite en lotes de 500), se movió ahí como desafío. La PWA quedó con "2 depósitos separados" y "3–4 computadoras compartidas antes de la app" (datos del CV).
 - [x] `src/data/about.js`: CNC en Pack Tango 2018–2019; desarrollo para A&P desde 2024 (datos del CV).
-- [x] El sitio dice "3.900+ productos" (3.920 activos en el panel). **Falta actualizar el CV, que dice ~2.900.**
+- [x] "3.900+ productos" en el sitio y en los CVs (3.920 activos en el panel).
 - [x] Catálogo v1 reescrito y verificado contra su repo (`Nicolomano/catalogoAyp`): tiene backend Express 5 + MongoDB, precios USD→ARS por cotización, kits, técnicos, Excel, migración de imágenes Cloudinary→R2 con Sharp, 17 PRs mergeados. **El CV lo describe mal ("React + Vite, sin backend"): corregirlo.** No usar "freelance" ni "distribuidora": trabaja ahí en relación de dependencia.
-- [ ] El CV no menciona las 180+ pruebas, el buscador Damerau-Levenshtein ni el SEO del v2: conviene sumarlos al CV.
+- [x] CVs actualizados (ES y EN): 3.900+, buscador, SEO y 180+ tests del v2; PWA con funciones y "4 computadoras"; v1 con backend y sin el link a catalogoayp.vercel.app. Se generaron con el conversor de ONLYOFFICE (`x2t`), que da el mismo resultado que el PDF original.
 - [x] Proyectos personales del CV (directorio comunitario, screener de CEDEARs): decidido no sumarlos por ahora.
 
 ## Fuentes de datos

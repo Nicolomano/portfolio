@@ -9,7 +9,8 @@ export function getProjectNumber(project) {
 }
 
 // "Proyecto 03 / PWA / Privado" (el CSS .label lo pasa a mayúsculas)
+// Público = tiene demo online; Archivado = ya no está online.
 export function projectLabel(project) {
-  const visibility = project.private ? "Privado" : "Público";
+  const visibility = project.private ? "Privado" : project.liveUrl ? "Público" : "Archivado";
   return `Proyecto ${getProjectNumber(project)} / ${project.type} / ${visibility}`;
 }
