@@ -27,52 +27,88 @@ const projects = [
     id: "catalogo-basico",
     title: "Catálogo A&P",
     shortDescription:
-      "Primera versión de un catálogo web para que los clientes vean productos y precios sin tener que preguntar todo por WhatsApp.",
+      "Primer catálogo web de A&P Refrigeración: carrito con pedido por WhatsApp, precios en dólares convertidos a pesos según la cotización y panel de administración.",
     fullDescription:
-      "Antes de esto, en la empresa recibíamos todo el día consultas de precio y stock por WhatsApp, y responder una por una llevaba mucho tiempo. Esta fue mi primera solución: un catálogo web con backend propio donde el cliente podía ver los productos disponibles. Fue mi punto de partida para empezar a resolver este problema con código, y sentó las bases de lo que después se convirtió en una versión mucho más completa.",
+      "Primer catálogo online del negocio, con backend propio. Los clientes buscan productos, arman el carrito y mandan el pedido por WhatsApp; desde el panel se administran productos, precios, kits, banners y técnicos.",
     problem:
-      "Los clientes preguntaban precios y disponibilidad de productos por WhatsApp constantemente, y armar cada respuesta a mano consumía mucho tiempo del equipo de atención.",
+      "El catálogo tiene muchos productos con precio en dólares, que cambia con la cotización. El stock se llevaba en planillas de Excel y los pedidos llegaban por WhatsApp sin ningún formato, así que cada consulta de precio y disponibilidad se respondía a mano.",
     solution:
-      "Un catálogo web con backend propio en Node.js, Express y MongoDB, donde el cliente ve los productos disponibles y sus precios. Las imágenes se alojan en Cloudinary.",
-    // TODO: completar con un dato real (ej. cuántas consultas dejaron de llegar, cuántos productos cargados).
-    impact:
-      "[TODO: impacto medible del catálogo básico]. Sentó las bases técnicas de la v2.",
-    stack: [
-      "React",
-      "Vite",
-      "Tailwind CSS",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "Cloudinary",
+      "Una web con catálogo público, carrito y panel de administración, con backend en Node.js, Express y MongoDB. Los productos se cargan en dólares y el precio en pesos se recalcula cuando el admin actualiza la cotización.",
+    features: [
+      "Búsqueda de texto completo, filtros por categoría, subcategoría y marca, y scroll infinito.",
+      "Precios en dólares convertidos a pesos con la cotización que carga el admin. También admite un precio fijo en pesos y muestra el precio en cuotas.",
+      "Registro de técnicos matriculados: el admin recibe un email, los aprueba y desde ahí ven un precio especial.",
+      "Carrito que arma el mensaje de WhatsApp con productos, cantidades, subtotales y la cotización aplicada.",
+      "Kits de instalación armados desde el admin, con el precio calculado a partir de sus componentes.",
+      "Panel de administración: productos, categorías, banners, usuarios y kits; métricas de vistas; importación y exportación de stock y precios por Excel; textos de la landing editables.",
     ],
-    // TODO: reemplazar por la métrica real de esta versión.
-    metrics: [{ value: "[TODO]", label: "métrica principal de la v1" }],
-    image: "catalogo-basico.png",
+    challenges: [
+      {
+        title: "Modelo de datos con la lógica del negocio",
+        text: "Precios en dos monedas, precio distinto según el rol del usuario y sincronización con el Excel del sistema contable. Para las consultas más frecuentes (productos activos por marca, destacados, novedades) armé índices compuestos en MongoDB, y un índice de texto para la búsqueda.",
+      },
+      {
+        title: "Excel sin pisar ediciones a mano",
+        text: "La importación actualiza stock y precios desde el Excel, pero conserva los nombres de producto que el admin había corregido a mano en el panel.",
+      },
+      {
+        title: "Migración de imágenes",
+        text: "Las imágenes estaban en Cloudinary. Escribí un script que las redimensiona y comprime con Sharp y las sube a Cloudflare R2, sin cortar el servicio.",
+      },
+    ],
+    // TODO: si hay un dato medible del v1 (consultas, pedidos), sumarlo acá.
+    impact:
+      "Fue el primer catálogo online del negocio. Lo iteré en producción con ramas y Pull Requests, y sentó las bases de la v2.",
+    stack: [
+      "React 19",
+      "Vite",
+      "Tailwind CSS 4",
+      "React Router 7",
+      "Node.js",
+      "Express 5",
+      "MongoDB / Mongoose",
+      "JWT",
+      "Cloudflare R2",
+      "Sharp",
+      "Multer",
+      "XLSX",
+      "Nodemailer",
+      "Vercel",
+    ],
+    metrics: [{ value: "17", label: "Pull Requests mergeados" }],
+    image: "catalogo-basico-listado.jpg",
     liveUrl: "https://catalogoayp.vercel.app",
-    repoUrl: null, // TODO: URL del repo si es público
+    repoUrl: null, // TODO: el repo es público (Nicolomano/catalogoAyp); sumarlo después de revisar los .env del historial
     gallery: [
-      { file: "catalogo-basico-1.png", alt: "Listado de productos con precios" },
-      { file: "catalogo-basico-2.png", alt: "Detalle de un producto" },
+      {
+        file: "catalogo-basico-listado.jpg",
+        alt: "Listado con filtros por categoría, precio en pesos y en cuotas",
+      },
+      { file: "catalogo-basico-detalle.jpg", alt: "Detalle de un producto" },
+      {
+        file: "catalogo-basico-kit.jpg",
+        alt: "Kit de instalación: se eligen medidas y cantidades y el total se calcula solo",
+      },
     ],
     video: null,
     type: "Web",
     private: false,
     featured: false,
-    year: "20XX", // TODO: año real
+    year: "2024",
     role: "Diseño y desarrollo full-stack",
     status: "Reemplazado por la v2",
-    evolutionNote: "Los clientes ven productos y precios sin preguntar por WhatsApp.",
+    evolutionNote:
+      "Carrito con pedido por WhatsApp y precios en dólares según la cotización.",
   },
   {
     id: "catalogo-avanzado",
     title: "Catálogo A&P v2",
     shortDescription:
-      "Catálogo online y sistema de pedidos de A&P Refrigeración: 3.600+ productos, registro de técnicos y pedidos por WhatsApp.",
+      "Catálogo online y sistema de pedidos de A&P Refrigeración: 3.900+ productos, registro de técnicos y pedidos por WhatsApp.",
     fullDescription:
-      "Catálogo online y sistema de pedidos para A&P Refrigeración, una casa de repuestos de refrigeración. Reemplazó al catálogo básico: además de mostrar productos, busca con tolerancia a errores, valida técnicos matriculados y arma el pedido con el precio calculado en el servidor.",
+      "Catálogo online y sistema de pedidos para A&P Refrigeración, una casa de repuestos de refrigeración. Reemplazó al primer catálogo: además de mostrar productos, busca con tolerancia a errores, valida técnicos matriculados y arma el pedido con el precio calculado en el servidor.",
     problem:
-      "Una casa de repuestos con más de 3.600 productos cargados en un sistema contable con nombres abreviados (“MOTOC.”, “FILCAP”, “TUBO DE NITRO”). Los clientes, técnicos de refrigeración, buscan con nombres coloquiales y errores de tipeo, y piden por WhatsApp. Además, el negocio tiene un precio diferenciado para técnicos matriculados, que hay que validar antes de otorgarlo.",
+      "Una casa de repuestos con más de 3.900 productos cargados en un sistema contable con nombres abreviados (“MOTOC.”, “FILCAP”, “TUBO DE NITRO”). Los clientes, técnicos de refrigeración, buscan con nombres coloquiales y errores de tipeo, y piden por WhatsApp. Además, el negocio tiene un precio diferenciado para técnicos matriculados, que hay que validar antes de otorgarlo.",
     solution:
       "Un catálogo con buscador tolerante a errores que entiende las abreviaturas del sistema contable, registro de técnicos con validación de matrícula y pedidos por WhatsApp con el precio recalculado en el servidor.",
     features: [
@@ -100,6 +136,10 @@ const projects = [
         title: "Auditoría de seguridad",
         text: "Un parámetro sin validar permitía descargar el catálogo entero en un solo pedido (842 KB), y la paginación inválida devolvía errores 500. Sumé autenticación JWT con revocación de sesiones y protección contra inyección NoSQL en el cuerpo de las peticiones.",
       },
+      {
+        title: "Importación masiva sin timeouts",
+        text: "La importación del Excel del sistema contable se cortaba por timeout. La refactoricé para escribir con bulkWrite de Mongoose en lotes de 500 productos.",
+      },
     ],
     quality:
       "Más de 180 pruebas automatizadas sobre una base de datos en memoria descartable, sembrada con datos reales del catálogo. Cada corrección se verificó contra producción antes y después.",
@@ -116,9 +156,10 @@ const projects = [
       "Railway",
       "Cloudflare R2",
       "Resend",
+      "sharp (WebP)",
     ],
     metrics: [
-      { value: "3.600+", label: "productos en catálogo", highlight: true },
+      { value: "3.900+", label: "productos en catálogo", highlight: true },
       { value: "3.889", label: "páginas descubiertas por Google", highlight: true },
       { value: "180+", label: "pruebas automatizadas", highlight: true },
       { value: "0 → 60", label: "resultados para “rulemanes”" },
@@ -158,47 +199,117 @@ const projects = [
     type: "E-commerce",
     private: false,
     featured: true,
-    year: "20XX", // TODO: año real
+    year: "2025",
     role: "Diseño y desarrollo full-stack",
     status: "En producción",
     evolutionNote:
-      "Búsqueda tolerante a errores, precio para técnicos y pedidos por WhatsApp.",
+      "Búsqueda tolerante a errores, SEO por categoría y precio validado en el servidor.",
   },
   {
     id: "pwa-stock",
     title: "PWA Stock",
     shortDescription:
-      "Una progressive web app para consultar el stock de productos y modificarlo en tiempo real desde el celular.",
+      "App interna para controlar el stock desde el celular, conectada a la base del sistema de gestión: consultas, ajustes, recepción de mercadería, movimientos entre depósitos, faltantes y etiquetas.",
     fullDescription:
-      "PWA Stock es una aplicación web progresiva que permite consultar el stock de productos y modificarlo en tiempo real. La aplicación está diseñada en conexión con el sistema que usa la empresa desde las computadoras de atención al cliente, permitiendo acceder a la base SQL desde el celular para que los empleados puedan ver, comprobar y modificar el stock de los productos estén donde estén. Está desarrollada con JavaScript, Node.js, Express y SQL Server.",
+      "Aplicación web progresiva que el personal instala en el celular. Se conecta directamente a la base SQL Server del software administrativo que ya usaba el negocio, así que no hubo que migrar datos ni cambiar de sistema: lo que se hace desde el celular aparece al instante en el sistema, y al revés.",
     problem:
-      "El problema que resolvió esta aplicación fue la necesidad de consultar y modificar el stock de productos desde cualquier lugar, sin estar en la oficina ni tener acceso a una computadora. Esto permitió a los empleados de la empresa ser más eficientes, ya que podían acceder a la información del stock en tiempo real desde sus dispositivos móviles.",
+      "El stock se manejaba con un software administrativo de escritorio instalado en 4 computadoras, que se compartían entre muchas más personas de ventas y depósito. Consultar un precio, ajustar stock, recibir mercadería o pasar productos entre el salón y el depósito obligaba a buscar una computadora libre, lejos de donde estaba el producto, y no quedaba registro de quién había hecho cada cambio.",
     solution:
-      "Una PWA conectada a la misma base SQL Server que usa el sistema de las computadoras de atención al cliente. Desde el celular, el empleado busca un producto, comprueba el stock y lo corrige en el momento.",
-    impact:
-      "Los empleados consultan y corrigen el stock desde el celular, estén donde estén, sin volver a una computadora. [TODO: dato medible, ej. tiempo ahorrado por control de stock].",
-    stack: ["JavaScript", "Node.js", "Express", "SQL Server"],
-    // TODO: confirmar el contexto de estas métricas (qué depósitos, qué se procesa en lotes de 500).
-    metrics: [
-      { value: "2", label: "depósitos" },
-      { value: "500", label: "por lote" },
+      "Una PWA conectada a la misma base SQL Server del sistema administrativo, sin tocar sus tablas. Desde el celular se busca un producto, se ve el stock de cada depósito y se corrige en el momento, y cada movimiento queda registrado con su autor.",
+    features: [
+      "Búsqueda por código de barras, código del fabricante o nombre, con precio al público y al gremio (IVA incluido) y stock total y por depósito.",
+      "Ajustes de stock por entrada, salida o cantidad exacta, con un botón Deshacer que revierte el último cambio sin pisar los movimientos posteriores.",
+      "Recepción de mercadería armada como carrito: borrador, ítems y confirmación que impacta el stock. Con historial y anulación que revierte el stock.",
+      "Movimientos entre depósitos tipo remito: avisa si no alcanza el stock en el origen y genera una hoja A4 en PDF que se imprime directo en la impresora del local.",
+      "Faltantes en dos listas: “a reponer” para compras (exportable a Excel, con cada producto marcable como pedido) y “traer de depósito” para reponer el salón.",
+      "Etiquetas con código de barras en una impresora térmica, y sincronización automática cada 20 segundos sin perder lo que se está cargando.",
     ],
-    image: "pwa-stock.png",
+    challenges: [
+      {
+        title: "Integración sin tocar el sistema existente",
+        text: "Aprendí cómo funciona la base del software administrativo a partir de sus datos (stock consolidado contra movimientos por depósito) y escribo los movimientos en su mismo formato, para que el sistema los reconozca como propios. Lo que necesita solo la app vive en tablas aparte.",
+      },
+      {
+        title: "Integridad de datos",
+        text: "Confirmar o anular cargas y movimientos son operaciones de varios pasos, así que corren dentro de transacciones. El Deshacer aplica el movimiento inverso en vez de fijar un valor absoluto, para no perder cambios hechos al mismo tiempo por otra persona.",
+      },
+      {
+        title: "Impresoras reales",
+        text: "Las etiquetas salen por una impresora térmica SATO: los comandos EPL2 los genero a mano para un rollo de dos columnas. Las hojas de movimiento son PDFs hechos con PDFKit que se imprimen sin diálogo vía SumatraPDF, todo desde un servidor Node en Windows.",
+      },
+      {
+        title: "Infraestructura mínima",
+        text: "Corre en la misma PC del local, que tiene 8 GB de RAM y los comparte con SQL Server. Desde afuera se accede con un túnel ngrok de dominio fijo, sin pagar hosting.",
+      },
+      {
+        title: "JavaScript sin framework, a propósito",
+        text: "Un server.js de unas 800 líneas y un index.html de 1.400. Cualquiera lo puede mantener y se actualiza con un git pull en la PC del local.",
+      },
+    ],
+    // TODO: si hay un dato medible (cargas registradas, tiempo ahorrado), sumarlo acá.
+    impact:
+      "El personal consulta, carga y mueve stock desde el celular, en el salón o en el depósito. Compras tiene una lista de faltantes siempre al día, y cada cambio de stock queda registrado con su autor.",
+    stack: [
+      "Node.js",
+      "Express",
+      "SQL Server (mssql)",
+      "JavaScript (sin framework)",
+      "PWA",
+      "PDFKit",
+      "ExcelJS",
+      "EPL2 (impresora térmica)",
+      "ngrok",
+    ],
+    metrics: [
+      { value: "4", label: "computadoras para todo el equipo antes de la app" },
+      { value: "2", label: "depósitos sincronizados" },
+      { value: "0", label: "cambios en las tablas del sistema existente" },
+    ],
+    image: "pwa-stock-buscar.jpg",
     liveUrl: null,
     repoUrl: null,
+    // Las capturas muestran usuarios internos (empleados), no datos de clientes ni técnicos.
     gallery: [
-      { file: "pwa-stock-1.png", alt: "Búsqueda de un producto", phone: true },
-      { file: "pwa-stock-2.png", alt: "Stock de un producto por depósito", phone: true },
-      { file: "pwa-stock-3.png", alt: "Corrección del stock", phone: true },
+      {
+        file: "pwa-stock-buscar.jpg",
+        alt: "Búsqueda por código de barras: precios, stock total y por depósito",
+        phone: true,
+      },
+      {
+        file: "pwa-stock-ajuste.jpg",
+        alt: "Ajuste de stock, stock mínimo e impresión de etiquetas",
+        phone: true,
+      },
+      {
+        file: "pwa-stock-carga.jpg",
+        alt: "Carga de mercadería confirmada, con el depósito de cada producto",
+        phone: true,
+      },
+      {
+        file: "pwa-stock-movimiento.jpg",
+        alt: "Movimiento del local al depósito, con hoja imprimible y PDF",
+        phone: true,
+      },
+      {
+        file: "pwa-stock-faltantes.jpg",
+        alt: "Faltantes para compras: productos bajo el stock mínimo",
+        phone: true,
+      },
+      {
+        file: "pwa-stock-traer.jpg",
+        alt: "Faltantes que hay que traer del depósito al local",
+        phone: true,
+      },
     ],
-    video: "pwa-stock-demo.mp4",
+    video: null,
     type: "PWA",
     private: true,
     featured: true,
-    year: "20XX", // TODO: año real
+    year: "2026",
     role: "Diseño y desarrollo full-stack",
     status: "En uso interno",
-    evolutionNote: "El stock se consulta y se corrige desde el celular.",
+    evolutionNote:
+      "El stock de los dos depósitos se controla desde el celular: ajustes, cargas, movimientos y faltantes.",
   },
 ];
 

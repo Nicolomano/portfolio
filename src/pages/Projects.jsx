@@ -11,7 +11,7 @@ const columns = "md:grid-cols-[3rem_minmax(0,1.3fr)_7rem_minmax(0,1fr)_3.5rem]";
 export default function Projects() {
   usePageMeta(
     "Proyectos · Nicolás Romano",
-    "Proyectos para A&P Refrigeración: catálogo web, e-commerce con 3.600+ productos y PWA de stock.",
+    "Proyectos para A&P Refrigeración: catálogo web, e-commerce con 3.900+ productos y PWA de stock.",
   );
 
   // Proyecto cuya captura se muestra en el panel derecho (hover o foco).

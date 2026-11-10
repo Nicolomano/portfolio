@@ -173,7 +173,7 @@ function Closing() {
 export default function Home() {
   usePageMeta(
     "Nicolás Romano · Desarrollador full-stack",
-    "Desarrollador full-stack MERN en Buenos Aires. E-commerce de 3.600+ productos y PWA de stock en producción para A&P Refrigeración.",
+    "Desarrollador full-stack MERN en Buenos Aires. E-commerce de 3.900+ productos y PWA de stock en producción para A&P Refrigeración.",
   );
 
   return (

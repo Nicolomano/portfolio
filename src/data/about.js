@@ -2,10 +2,10 @@
 
 export const path = [
   {
-    period: "[TODO] — [TODO]", // TODO: años como operario CNC
-    title: "Operario CNC",
-    place: "[TODO: empresa o rubro]",
-    text: "Operación de máquinas de control numérico. [TODO: una línea sobre qué hacías]",
+    period: "2018 — 2019",
+    title: "Operario calificado CNC",
+    place: "Pack Tango",
+    text: "Operación y programación de máquinas CNC para fabricación de piezas, con control de calidad y ajustes de precisión.",
   },
   {
     period: "2021 — hoy",
@@ -14,10 +14,10 @@ export const path = [
     text: "Mostrador y consultas de clientes por precio, stock y disponibilidad de repuestos, muchas por WhatsApp.",
   },
   {
-    period: "[TODO] — hoy", // TODO: año en que empezaste a programar para el negocio
+    period: "2024 — hoy",
     title: "Desarrollo de software para el negocio",
     place: "A&P Refrigeración",
-    text: "Primero un catálogo web; después el e-commerce de refrigeracionayp.com, con más de 3.600 productos; y una PWA de stock de uso interno.",
+    text: "Primero un catálogo web; después el e-commerce de refrigeracionayp.com, con más de 3.900 productos; y una PWA de stock de uso interno.",
   },
 ];
 
