@@ -80,7 +80,7 @@ const projects = [
     image: "catalogo-basico-listado.jpg",
     liveUrl: null, // catalogoayp.vercel.app se va a dar de baja
     successor: "catalogo-avanzado",
-    repoUrl: null, // TODO: el repo es público (Nicolomano/catalogoAyp); sumarlo después de revisar los .env del historial
+    repoUrl: "https://github.com/Nicolomano/catalogoAyp",
     gallery: [
       {
         file: "catalogo-basico-listado.jpg",
@@ -168,7 +168,7 @@ const projects = [
     ],
     image: "catalogo-avanzado.jpg",
     liveUrl: "https://refrigeracionayp.com",
-    repoUrl: null, // TODO: URL del repo si es público
+    repoUrl: "https://github.com/Nicolomano/catalogo-ayp-v2",
     // Ojo: no mostrar datos de técnicos (nombres, DNI, matrículas, teléfonos) ni pedidos con clientes.
     gallery: [
       {
@@ -269,7 +269,7 @@ const projects = [
     ],
     image: "pwa-stock-buscar.jpg",
     liveUrl: null,
-    repoUrl: null,
+    repoUrl: null, // el repo (Nicolomano/stock-api) es privado
     // Las capturas muestran usuarios internos (empleados), no datos de clientes ni técnicos.
     gallery: [
       {
