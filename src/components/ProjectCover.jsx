@@ -1,10 +1,12 @@
 import PhoneFrame from "./PhoneFrame";
 import Shot from "./Shot";
+import { useI18n } from "../i18n/index.js";
 
 // Captura principal: dentro de un celular si es la PWA privada,
 // o en un marco plano de 3:2 si es una web pública.
 export default function ProjectCover({ project }) {
-  const alt = `Captura principal de ${project.title}`;
+  const { t } = useI18n();
+  const alt = t.mainScreenshot(project.title);
 
   if (project.private) {
     return (

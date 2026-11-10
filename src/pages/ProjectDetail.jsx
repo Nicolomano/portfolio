@@ -1,11 +1,11 @@
 import { Link, useParams } from "react-router-dom";
-import projects from "../data/projects.js";
 import Cta from "../components/Cta";
 import PhoneFrame from "../components/PhoneFrame";
 import Reveal from "../components/Reveal";
 import Shot from "../components/Shot";
 import SpecList from "../components/SpecList";
 import usePageMeta from "../hooks/usePageMeta";
+import { useI18n } from "../i18n/index.js";
 import { getProjectNumber, pad, projectLabel } from "../lib/projects.js";
 import NotFound from "./NotFound";
 
@@ -22,14 +22,14 @@ function CaseSection({ number, title, children }) {
 }
 
 // Arma las secciones según los campos que tenga cada proyecto.
-function getSections(project) {
+function getSections(project, names) {
   const { problem, solution, features, challenges, quality, impact, fullDescription } =
     project;
 
   return [
-    ["Problema", <p key="p">{problem}</p>],
+    [names.problem, <p key="p">{problem}</p>],
     [
-      "Solución",
+      names.solution,
       <div key="s">
         <p>{solution}</p>
         {features && (
@@ -44,7 +44,7 @@ function getSections(project) {
       </div>,
     ],
     challenges && [
-      "Desafíos técnicos",
+      names.challenges,
       <div key="c" className="grid gap-8">
         {challenges.map(({ title, text }) => (
           <div key={title}>
@@ -54,14 +54,14 @@ function getSections(project) {
         ))}
       </div>,
     ],
-    quality && ["Calidad", <p key="q">{quality}</p>],
-    ["Impacto", <p key="i">{impact}</p>],
+    quality && [names.quality, <p key="q">{quality}</p>],
+    [names.impact, <p key="i">{impact}</p>],
     // Si no hay desafíos cargados, se muestra la descripción completa.
-    !challenges && ["Detalle técnico", <p key="d" className="text-ink-soft">{fullDescription}</p>],
+    !challenges && [names.details, <p key="d" className="text-ink-soft">{fullDescription}</p>],
   ].filter(Boolean);
 }
 
-function Gallery({ project }) {
+function Gallery({ project, videoLabel }) {
   const { title, gallery, video } = project;
   const flat = gallery.filter((item) => !item.phone);
   const phone = gallery.filter((item) => item.phone);
@@ -88,9 +88,9 @@ function Gallery({ project }) {
           {video && (
             <figure>
               <PhoneFrame>
-                <Shot video file={video} alt={`${title}: video de uso`} className="h-full w-full" />
+                <Shot video file={video} alt={`${title}: ${videoLabel}`} className="h-full w-full" />
               </PhoneFrame>
-              <figcaption className="mt-3 text-center text-sm text-ink-soft">Video de uso</figcaption>
+              <figcaption className="mt-3 text-center text-sm text-ink-soft">{videoLabel}</figcaption>
             </figure>
           )}
         </div>
@@ -100,13 +100,15 @@ function Gallery({ project }) {
 }
 
 export default function ProjectDetail() {
-  // La ruta es /proyectos/:slug y el slug coincide con el id del proyecto.
+  // El slug coincide con el id del proyecto (igual en los dos idiomas).
   const { slug } = useParams();
+  const { t, path, projects, projectPath } = useI18n();
+  const text = t.project;
   const index = projects.findIndex((p) => p.id === slug);
   const project = projects[index];
 
   usePageMeta(
-    project ? `${project.title} · Nicolás Romano` : "Proyecto no encontrado · Nicolás Romano",
+    `${project ? project.title : text.notFound} · Nicolás Romano`,
     project?.shortDescription,
   );
 
@@ -114,29 +116,29 @@ export default function ProjectDetail() {
 
   const prev = projects[index - 1];
   const next = projects[index + 1];
-  const sections = getSections(project);
+  const sections = getSections(project, text.sections);
 
   const links = (
     <div className="mt-6 flex flex-col items-start gap-3">
       {project.liveUrl && (
         <Cta href={project.liveUrl} target="_blank" rel="noreferrer">
-          Ver online <span aria-hidden="true">↗</span>
+          {text.live} <span aria-hidden="true">↗</span>
         </Cta>
       )}
       {project.repoUrl && (
         <Cta href={project.repoUrl} variant="secondary" target="_blank" rel="noreferrer">
-          Repositorio <span aria-hidden="true">↗</span>
+          {text.repo} <span aria-hidden="true">↗</span>
         </Cta>
       )}
       {project.successor && (
-        <Cta to={`/proyectos/${project.successor}`} variant="secondary">
-          Ver la versión actual <span aria-hidden="true">→</span>
+        <Cta to={projectPath(project.successor)} variant="secondary">
+          {text.successor} <span aria-hidden="true">→</span>
         </Cta>
       )}
       {project.private && (
         <p className="label border border-ink px-4 py-3">
           <span aria-hidden="true" className="mr-2 inline-block size-2 bg-accent" />
-          Proyecto interno · no tiene demo pública
+          {text.internal}
         </p>
       )}
     </div>
@@ -144,9 +146,9 @@ export default function ProjectDetail() {
 
   return (
     <article>
-      <nav aria-label="Ruta" className="label flex justify-between border-b border-rule py-3">
-        <Link to="/proyectos" className="transition-colors duration-150 hover:text-accent-ink">
-          ← Proyectos
+      <nav aria-label={text.breadcrumb} className="label flex justify-between border-b border-rule py-3">
+        <Link to={path.projects} className="transition-colors duration-150 hover:text-accent-ink">
+          {text.back}
         </Link>
         <span className="text-ink-soft">
           {getProjectNumber(project)} / {pad(projects.length)}
@@ -154,7 +156,7 @@ export default function ProjectDetail() {
       </nav>
 
       <header className="border-b border-ink py-10 lg:py-14">
-        <p className="label">{projectLabel(project)}</p>
+        <p className="label">{projectLabel(project, t.label)}</p>
         <h1 className="mt-4 text-5xl leading-[0.9] font-black tracking-[-0.045em] sm:text-7xl lg:text-[7.5rem]">
           {project.title}
         </h1>
@@ -166,15 +168,15 @@ export default function ProjectDetail() {
       <div className="grid lg:grid-cols-12">
         <aside className="border-b border-ink py-8 lg:col-span-4 lg:border-r lg:border-b-0 lg:pr-8">
           <div className="lg:sticky lg:top-24">
-            <h2 className="label mb-3 text-ink-soft">Ficha técnica</h2>
+            <h2 className="label mb-3 text-ink-soft">{text.specSheet}</h2>
             <SpecList
               items={[
-                ["Rol", project.role],
-                ["Tipo", project.type],
-                ["Año", project.year],
-                ["Estado", project.status],
+                [text.spec.role, project.role],
+                [text.spec.type, project.type],
+                [text.spec.year, project.year],
+                [text.spec.status, project.status],
                 [
-                  "Stack",
+                  text.spec.stack,
                   <ul key="stack" className="font-mono text-[0.8125rem] leading-relaxed">
                     {project.stack.map((tech) => (
                       <li key={tech}>{tech}</li>
@@ -207,20 +209,21 @@ export default function ProjectDetail() {
 
           <section aria-labelledby="galeria" className="border-t border-ink pt-4">
             <h2 id="galeria" className="label mb-8">
-              <span className="text-accent-ink">{pad(sections.length + 1)}</span> / Capturas
+              <span className="text-accent-ink">{pad(sections.length + 1)}</span> /{" "}
+              {text.sections.screenshots}
             </h2>
-            <Gallery project={project} />
+            <Gallery project={project} videoLabel={text.usageVideo} />
           </section>
         </div>
       </div>
 
-      <nav aria-label="Otros proyectos" className="mt-16 grid border-t border-ink sm:grid-cols-2">
+      <nav aria-label={text.otherProjects} className="mt-16 grid border-t border-ink sm:grid-cols-2">
         {prev ? (
           <Link
-            to={`/proyectos/${prev.id}`}
+            to={projectPath(prev.id)}
             className="group border-b border-rule py-6 sm:border-r sm:border-b-0 sm:border-ink sm:pr-6"
           >
-            <span className="label text-ink-soft">← Anterior</span>
+            <span className="label text-ink-soft">{text.previous}</span>
             <span className="mt-2 block text-2xl font-extrabold tracking-tight transition-colors duration-200 group-hover:text-accent-ink">
               {prev.title}
             </span>
@@ -229,8 +232,8 @@ export default function ProjectDetail() {
           <span className="hidden sm:block sm:border-r sm:border-ink" />
         )}
         {next && (
-          <Link to={`/proyectos/${next.id}`} className="group py-6 sm:pl-6 sm:text-right">
-            <span className="label text-ink-soft">Siguiente →</span>
+          <Link to={projectPath(next.id)} className="group py-6 sm:pl-6 sm:text-right">
+            <span className="label text-ink-soft">{text.next}</span>
             <span className="mt-2 block text-2xl font-extrabold tracking-tight transition-colors duration-200 group-hover:text-accent-ink">
               {next.title}
             </span>

@@ -1,35 +1,35 @@
-import { availability, education, languages, path } from "../data/about.js";
+import * as aboutEs from "../data/about.js";
+import * as aboutEn from "../data/about.en.js";
 import Cta from "../components/Cta";
 import Reveal from "../components/Reveal";
 import SectionHeader from "../components/SectionHeader";
 import SpecList from "../components/SpecList";
 import usePageMeta from "../hooks/usePageMeta";
+import { useI18n } from "../i18n/index.js";
 import { pad } from "../lib/projects.js";
 
+const content = { es: aboutEs, en: aboutEn };
+
 export default function About() {
-  usePageMeta(
-    "Sobre mí · Nicolás Romano",
-    "De operario CNC a desarrollador full-stack: recorrido, formación (UTN, Digital House, Coderhouse) y disponibilidad.",
-  );
+  const { lang, t, path: routes } = useI18n();
+  const text = t.about;
+  const { availability, education, languages, path } = content[lang];
+  usePageMeta(text.metaTitle, text.metaDescription);
 
   return (
     <>
       <header className="grid gap-8 border-b border-ink py-10 lg:grid-cols-12 lg:py-16">
-        <p className="label text-ink-soft lg:col-span-12">Sobre mí / Perfil</p>
+        <p className="label text-ink-soft lg:col-span-12">{text.eyebrow}</p>
         <h1 className="text-6xl leading-[0.9] font-black tracking-[-0.045em] sm:text-8xl lg:col-span-12 lg:text-[9rem]">
-          Sobre mí
+          {text.title}
         </h1>
         <p className="max-w-xl text-lg leading-relaxed text-ink-soft lg:col-span-6 lg:col-start-7">
-          Aprendí a programar resolviendo problemas del negocio donde trabajo. Desde 2021 estoy
-          en atención al cliente en A&amp;P Refrigeración, y ahí vi los problemas de cerca:
-          consultas repetidas por WhatsApp, técnicos que no encontraban un repuesto porque el
-          sistema lo tenía abreviado, stock que solo se podía revisar desde una computadora.
-          Antes fui operario CNC.
+          {text.intro}
         </p>
       </header>
 
       <section aria-labelledby="recorrido" className="mt-16">
-        <SectionHeader number="01" title="Recorrido" id="recorrido" />
+        <SectionHeader number="01" title={text.path} id="recorrido" />
         <ol className="mt-6">
           {path.map((step, i) => (
             <Reveal
@@ -52,14 +52,14 @@ export default function About() {
       </section>
 
       <section aria-labelledby="formacion" className="mt-20">
-        <SectionHeader number="02" title="Formación" id="formacion" />
+        <SectionHeader number="02" title={text.education} id="formacion" />
         <div className="mt-6 overflow-x-auto">
           <table className="w-full min-w-[22rem] text-left">
             <thead className="label text-ink-soft">
               <tr className="border-b border-ink">
-                <th scope="col" className="py-3 pr-4 font-normal">Institución</th>
-                <th scope="col" className="py-3 pr-4 font-normal">Programa</th>
-                <th scope="col" className="py-3 text-right font-normal">Año</th>
+                <th scope="col" className="py-3 pr-4 font-normal">{text.table.school}</th>
+                <th scope="col" className="py-3 pr-4 font-normal">{text.table.program}</th>
+                <th scope="col" className="py-3 text-right font-normal">{text.table.year}</th>
               </tr>
             </thead>
             <tbody>
@@ -77,15 +77,15 @@ export default function About() {
 
       <div className="mt-20 grid gap-16 lg:grid-cols-2 lg:gap-12">
         <section aria-labelledby="idiomas">
-          <SectionHeader number="03" title="Idiomas" id="idiomas" />
+          <SectionHeader number="03" title={text.languages} id="idiomas" />
           <SpecList items={languages} className="mt-6" />
         </section>
         <section aria-labelledby="disponibilidad">
-          <SectionHeader number="04" title="Disponibilidad" id="disponibilidad" />
+          <SectionHeader number="04" title={text.availability} id="disponibilidad" />
           <SpecList items={availability} className="mt-6" />
           <div className="mt-8">
-            <Cta to="/contacto">
-              Contactarme <span aria-hidden="true">→</span>
+            <Cta to={routes.contact}>
+              {text.contactMe} <span aria-hidden="true">→</span>
             </Cta>
           </div>
         </section>

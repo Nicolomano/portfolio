@@ -1,59 +1,53 @@
 import { Link } from "react-router-dom";
-import projects from "../data/projects.js";
 import profile from "../data/profile.js";
 import Cta from "../components/Cta";
 import ProjectCard from "../components/ProjectCard";
 import SectionHeader from "../components/SectionHeader";
 import SpecList from "../components/SpecList";
 import usePageMeta from "../hooks/usePageMeta";
-
-const featured = projects.filter((p) => p.featured);
-
-// La franja de datos muestra las métricas destacadas del proyecto principal.
-const showcase = projects.find((p) => p.id === "catalogo-avanzado");
-const facts = showcase.metrics.filter((m) => m.highlight);
+import { useI18n } from "../i18n/index.js";
 
 function Hero() {
+  const { lang, t, path } = useI18n();
+  const { home } = t;
+
   return (
     <section aria-labelledby="hero-title" className="grid border-b border-ink lg:grid-cols-12">
       <div className="py-10 lg:col-span-8 lg:border-r lg:border-ink lg:py-16 lg:pr-12">
-        <p className="label text-accent-ink">Desarrollador full-stack MERN</p>
+        <p className="label text-accent-ink">{home.eyebrow}</p>
         <h1
           id="hero-title"
           className="mt-6 text-[2.625rem] leading-[0.95] font-extrabold tracking-[-0.04em] text-balance sm:text-6xl lg:text-[5.25rem] xl:text-[6.25rem]"
         >
-          Hice el <span className="whitespace-nowrap">e-commerce</span> y la app de stock de la
-          casa de repuestos donde trabajo.
+          {home.heroBefore}
+          <span className="whitespace-nowrap">{home.heroNowrap}</span>
+          {home.heroAfter}
         </h1>
-        <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink-soft">
-          Trabajo desde 2021 en A&amp;P Refrigeración. Los técnicos buscan y piden repuestos
-          en el e-commerce, y el equipo controla el stock desde el celular con la PWA. Las
-          desarrollé de punta a punta y las dos están en uso.
-        </p>
+        <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink-soft">{home.heroText}</p>
         <div className="mt-10 flex flex-wrap gap-3">
-          <Cta to="/proyectos">
-            Ver proyectos <span aria-hidden="true">→</span>
+          <Cta to={path.projects}>
+            {home.viewProjects} <span aria-hidden="true">→</span>
           </Cta>
-          <Cta href={profile.cv.es} variant="secondary" download>
-            Descargar CV <span className="text-ink-soft">(PDF)</span>
+          <Cta href={profile.cv[lang]} variant="secondary" download>
+            {home.downloadCv} <span className="text-ink-soft">(PDF)</span>
           </Cta>
         </div>
       </div>
 
-      <aside aria-label="Ficha personal" className="pb-10 lg:col-span-4 lg:py-16 lg:pl-8">
+      <aside aria-label={home.personalDetails} className="pb-10 lg:col-span-4 lg:py-16 lg:pl-8">
         <SpecList
           items={[
-            ["Nombre", profile.name],
-            ["Rol", profile.role],
-            ["Ubicación", profile.location],
-            ["Jornada", "Full time"],
-            ["Modalidad", "Presencial · remoto · híbrido"],
-            ["Formación", "UTN · Digital House"],
+            [home.spec.name, profile.name],
+            [home.spec.role, t.profile.role],
+            [home.spec.location, profile.location],
+            [home.spec.schedule, "Full time"],
+            [home.spec.workMode, home.spec.workModeValue],
+            [home.spec.education, "UTN · Digital House"],
             [
-              "Estado",
+              home.spec.status,
               <span key="estado" className="flex items-center gap-2">
                 <span aria-hidden="true" className="size-2 bg-accent" />
-                Buscando empleo
+                {home.spec.statusValue}
               </span>,
             ],
           ]}
@@ -63,7 +57,11 @@ function Hero() {
   );
 }
 
-function Facts() {
+// La franja de datos muestra las métricas destacadas del proyecto principal.
+function Facts({ showcase }) {
+  const { t, projectPath } = useI18n();
+  const facts = showcase.metrics.filter((m) => m.highlight);
+
   return (
     <section aria-labelledby="datos" className="border-b border-ink">
       <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-rule py-3">
@@ -71,10 +69,10 @@ function Facts() {
           {showcase.title} · {showcase.status}
         </h2>
         <Link
-          to={`/proyectos/${showcase.id}`}
+          to={projectPath(showcase.id)}
           className="label transition-colors duration-150 hover:text-accent-ink"
         >
-          Ver el caso →
+          {t.home.seeCase}
         </Link>
       </div>
       <div className="grid sm:grid-cols-3">
@@ -96,9 +94,11 @@ function Facts() {
 }
 
 function Evolution() {
+  const { t, projects, projectPath } = useI18n();
+
   return (
     <section aria-labelledby="evolucion" className="mt-24">
-      <SectionHeader number="02" title="Evolución" id="evolucion" />
+      <SectionHeader number="02" title={t.home.evolution} id="evolucion" />
 
       <ol className="mt-6 grid md:grid-cols-3">
         {projects.map((project, i) => (
@@ -118,7 +118,7 @@ function Evolution() {
             </p>
             <h3 className="mt-4 text-2xl font-extrabold tracking-tight">
               <Link
-                to={`/proyectos/${project.id}`}
+                to={projectPath(project.id)}
                 className="transition-colors duration-200 hover:text-accent-ink"
               >
                 {project.title}
@@ -144,12 +144,14 @@ function Evolution() {
 }
 
 function Closing() {
+  const { lang, t, path } = useI18n();
+
   return (
     <section aria-labelledby="cierre" className="mt-24">
-      <SectionHeader number="03" title="Contacto" id="cierre" />
+      <SectionHeader number="03" title={t.home.contact} id="cierre" />
       <div className="mt-8 grid gap-10 lg:grid-cols-12">
         <p className="text-4xl leading-[0.95] font-extrabold tracking-[-0.035em] sm:text-5xl lg:col-span-8 lg:text-7xl">
-          Busco un puesto como desarrollador en relación de dependencia.
+          {t.home.closing}
         </p>
         <div className="flex flex-col justify-end gap-6 lg:col-span-4">
           <a
@@ -159,8 +161,8 @@ function Closing() {
             {profile.email}
           </a>
           <div className="flex flex-wrap gap-3">
-            <Cta to="/contacto">Contacto</Cta>
-            <Cta href={profile.cv.es} variant="secondary" download>
+            <Cta to={path.contact}>{t.home.contact}</Cta>
+            <Cta href={profile.cv[lang]} variant="secondary" download>
               CV (PDF)
             </Cta>
           </div>
@@ -171,23 +173,24 @@ function Closing() {
 }
 
 export default function Home() {
-  usePageMeta(
-    "Nicolás Romano · Desarrollador full-stack",
-    "Desarrollador full-stack MERN en Buenos Aires. E-commerce de 3.900+ productos y PWA de stock en producción para A&P Refrigeración.",
-  );
+  const { t, path, projects } = useI18n();
+  usePageMeta(t.home.metaTitle, t.home.metaDescription);
+
+  const featured = projects.filter((p) => p.featured);
+  const showcase = projects.find((p) => p.id === "catalogo-avanzado");
 
   return (
     <>
       <Hero />
-      <Facts />
+      <Facts showcase={showcase} />
 
       <section aria-labelledby="casos" className="mt-24">
-        <SectionHeader number="01" title="Casos de estudio" id="casos">
+        <SectionHeader number="01" title={t.home.caseStudies} id="casos">
           <Link
-            to="/proyectos"
+            to={path.projects}
             className="label transition-colors duration-150 hover:text-accent-ink"
           >
-            Índice completo →
+            {t.home.fullIndex}
           </Link>
         </SectionHeader>
         {featured.map((project) => (

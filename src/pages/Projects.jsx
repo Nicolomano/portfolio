@@ -1,18 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import projects from "../data/projects.js";
 import ProjectCover from "../components/ProjectCover";
 import usePageMeta from "../hooks/usePageMeta";
+import { useI18n } from "../i18n/index.js";
 import { getProjectNumber, pad } from "../lib/projects.js";
 
 // Columnas del índice (las mismas para el encabezado y para cada fila).
 const columns = "md:grid-cols-[3rem_minmax(0,1.3fr)_7rem_minmax(0,1fr)_3.5rem]";
 
 export default function Projects() {
-  usePageMeta(
-    "Proyectos · Nicolás Romano",
-    "Proyectos para A&P Refrigeración: catálogo web, e-commerce con 3.900+ productos y PWA de stock.",
-  );
+  const { t, projects, projectPath } = useI18n();
+  const text = t.projects;
+  usePageMeta(text.metaTitle, text.metaDescription);
 
   // Proyecto cuya captura se muestra en el panel derecho (hover o foco).
   const [activeId, setActiveId] = useState(null);
@@ -21,13 +20,12 @@ export default function Projects() {
   return (
     <>
       <header className="grid gap-6 border-b border-ink py-10 lg:grid-cols-12 lg:py-16">
-        <p className="label text-ink-soft lg:col-span-12">{pad(projects.length)} proyectos</p>
+        <p className="label text-ink-soft lg:col-span-12">{text.count(pad(projects.length))}</p>
         <h1 className="text-6xl leading-[0.9] font-black tracking-[-0.045em] sm:text-8xl lg:col-span-12 lg:text-[9rem]">
-          Proyectos
+          {text.title}
         </h1>
         <p className="max-w-md text-lg leading-relaxed text-ink-soft lg:col-span-5 lg:col-start-8">
-          Todos hechos para A&amp;P Refrigeración, la casa de repuestos donde trabajo, en orden
-          cronológico.
+          {text.intro}
         </p>
       </header>
 
@@ -37,18 +35,18 @@ export default function Projects() {
             aria-hidden="true"
             className={`label hidden gap-x-4 border-b border-ink py-3 text-ink-soft md:grid ${columns}`}
           >
-            <span>N°</span>
-            <span>Proyecto</span>
-            <span>Tipo</span>
-            <span>Stack</span>
-            <span className="text-right">Año</span>
+            <span>{text.columns.number}</span>
+            <span>{text.columns.project}</span>
+            <span>{text.columns.type}</span>
+            <span>{text.columns.stack}</span>
+            <span className="text-right">{text.columns.year}</span>
           </div>
 
           <ol>
             {projects.map((project) => (
               <li key={project.id} className="border-b border-ink">
                 <Link
-                  to={`/proyectos/${project.id}`}
+                  to={projectPath(project.id)}
                   onMouseEnter={() => setActiveId(project.id)}
                   onFocus={() => setActiveId(project.id)}
                   className={`group grid grid-cols-[2.5rem_1fr] items-baseline gap-x-4 gap-y-1.5 py-6 transition-colors duration-200 hover:bg-paper-dark md:-mx-3 md:px-3 ${columns}`}
@@ -67,7 +65,7 @@ export default function Projects() {
                   </span>
                   <span className="label col-start-2 md:col-start-auto">
                     {project.type}
-                    {project.private && " · Privado"}
+                    {project.private && ` · ${t.label.private}`}
                   </span>
                   <span className="label col-start-2 leading-relaxed text-ink-soft md:col-start-auto">
                     {project.stack.join(" / ")}
@@ -93,7 +91,7 @@ export default function Projects() {
               </figure>
             ) : (
               <div className="stripes label flex aspect-[3/2] items-center justify-center border border-ink text-ink-soft">
-                Pasá el cursor por un proyecto
+                {text.hoverHint}
               </div>
             )}
           </div>

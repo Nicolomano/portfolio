@@ -38,15 +38,26 @@ Este archivo existe para retomar el trabajo desde otra PC o en otra sesión. Lee
 
 ```
 src/data/       projects.js, profile.js (email, LinkedIn, GitHub, CV), about.js
+                projects.en.js y about.en.js: textos en inglés
 src/components/ Shot (imagen/video con placeholder rayado si falta), PhoneFrame (celular en CSS),
                 ProjectCover, ProjectCard (resumen de caso en Home), Reveal, SpecList,
                 SectionHeader, Cta, Layout, Navbar, Footer
 src/pages/      Home, Projects (índice con preview en hover), ProjectDetail, About, Contact, NotFound
 src/hooks/      usePageMeta (title + meta description por página)
-src/lib/        projects.js (pad, número y etiqueta "Proyecto 02 / E-commerce / Público")
+src/lib/        projects.js (pad, número, etiqueta "Proyecto 02 / E-commerce / Público", getProjects(lang))
+src/i18n/       index.js (rutas por idioma, useI18n, switchLangPath), ui.js (textos de la interfaz es/en)
 ```
 
-- Rutas: `/`, `/proyectos`, `/proyectos/:slug` (slug = `id` del proyecto), `/sobre-mi`, `/contacto`, `*`.
+- Rutas en español: `/`, `/proyectos`, `/proyectos/:slug` (slug = `id` del proyecto), `/sobre-mi`, `/contacto`, `*`.
+- Rutas en inglés: `/en`, `/en/projects`, `/en/projects/:slug`, `/en/about`, `/en/contact`. El idioma sale de la URL (`useI18n`); el selector ES/EN de la navbar lleva a la misma página en el otro idioma.
+
+## Versión en inglés
+
+- **Todo texto nuevo o cambiado va en los dos idiomas.** Interfaz: `src/i18n/ui.js`. Proyectos: `src/data/projects.en.js` (solo textos, por `id`; `metrics` y `galleryAlts` en el mismo orden que en `projects.js`). Sobre mí: `src/data/about.en.js`.
+- Imágenes, stack, años y links salen siempre de `projects.js`; la traducción solo pisa textos (ver `localize` en `src/lib/projects.js`).
+- En inglés los números van con coma de miles ("3,900+"), por eso `projects.en.js` pisa también algunos `value` de `metrics`.
+- "Casa de repuestos" = "refrigeration parts store" / "parts store". Nunca "wholesaler" ni "distributor".
+- En la página en inglés se descarga el CV en inglés.
 - `ProjectDetail` arma las secciones según los campos que existan (`features`, `challenges`, `quality` son opcionales) y las numera solo.
 - `successor` (opcional): id del proyecto que lo reemplazó; el detalle muestra "Ver la versión actual". Sin `liveUrl` ni `private`, la etiqueta dice "Archivado".
 - Campos de proyecto: no renombrar los existentes (`id, title, shortDescription, fullDescription, problem, stack, image, liveUrl, gallery`). `gallery` es `[{ file, alt, phone? }]`.
@@ -79,7 +90,8 @@ src/lib/        projects.js (pad, número y etiqueta "Proyecto 02 / E-commerce /
 ## Fuentes de datos
 
 - Los CVs de `public/cv/` son fuente válida de fechas y datos para el sitio (los `.docx` editables no están en el repo).
-- [ ] `repoUrl`: `Nicolomano/catalogoAyp` y `Nicolomano/catalogo-ayp-v2` son públicos, pero su historial tiene archivos `.env` commiteados (v1: `Backend/src/config/.env.development`, `frontend/.env`; v2: `frontend/.env`, `frontend/.env.production`). Revisarlos y rotar credenciales si hace falta antes de linkearlos.
+- [x] `repoUrl` del v1 (`Nicolomano/catalogoAyp`) y del v2 (`Nicolomano/catalogo-ayp-v2`). Los `.env` del historial se revisaron: solo tenían valores de ejemplo o de desarrollo, no claves reales. En el v1 se dejaron de versionar (rama `claude/preview-o90NN`, la única que los tenía). La PWA (`stock-api`) es privada: no linkear.
+- [ ] El repo del v1 no tiene README en `main` y el del v2 tiene uno corto: conviene mejorarlos, porque es lo primero que ve quien entra desde el portfolio.
 
 ## Comandos
 

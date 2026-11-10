@@ -1,26 +1,29 @@
 import { Link } from "react-router-dom";
 import ProjectCover from "./ProjectCover";
 import Reveal from "./Reveal";
-import { projectLabel } from "../lib/projects.js";
+import { useI18n } from "../i18n/index.js";
+import { pad, projectLabel } from "../lib/projects.js";
 
 // Resumen de un proyecto como caso de estudio (Home):
 // problema → solución → impacto, métrica principal en grande, stack y captura.
 export default function ProjectCard({ project }) {
+  const { t, projectPath } = useI18n();
   const { id, title, shortDescription, problem, solution, impact, stack, metrics } =
     project;
   const mainMetric = metrics[0];
-  const url = `/proyectos/${id}`;
+  const url = projectPath(id);
+  const { sections } = t.project;
 
   const steps = [
-    ["Problema", problem],
-    ["Solución", solution],
-    ["Impacto", impact],
+    [sections.problem, problem],
+    [sections.solution, solution],
+    [sections.impact, impact],
   ];
 
   return (
     <Reveal as="article" className="grid gap-10 border-t border-ink py-10 lg:grid-cols-12 lg:py-16">
       <div className="lg:col-span-5">
-        <p className="label">{projectLabel(project)}</p>
+        <p className="label">{projectLabel(project, t.label)}</p>
         <h3 className="mt-4 text-4xl leading-[0.95] font-extrabold tracking-[-0.03em] sm:text-5xl lg:text-6xl">
           <Link to={url} className="transition-colors duration-200 hover:text-accent-ink">
             {title}
@@ -31,7 +34,7 @@ export default function ProjectCard({ project }) {
         <ol className="mt-10">
           {steps.map(([name, text], i) => (
             <li key={name} className="grid grid-cols-[2.5rem_1fr] border-t border-rule py-4">
-              <span className="label text-accent-ink">{`0${i + 1}`}</span>
+              <span className="label text-accent-ink">{pad(i + 1)}</span>
               <div>
                 <h4 className="label">{name}</h4>
                 <p className="mt-1.5 leading-relaxed">{text}</p>
@@ -52,7 +55,7 @@ export default function ProjectCard({ project }) {
             <span className="label mt-2 block">{mainMetric.label}</span>
           </p>
           <div>
-            <p className="label text-ink-soft">Stack</p>
+            <p className="label text-ink-soft">{t.project.spec.stack}</p>
             <p className="label mt-1.5 leading-relaxed">{stack.join(" / ")}</p>
           </div>
         </div>
@@ -61,7 +64,7 @@ export default function ProjectCard({ project }) {
           to={url}
           className="label group mt-8 inline-flex items-center gap-3 border-b border-ink pb-1 transition-colors duration-200 hover:border-accent hover:text-accent-ink"
         >
-          Leer el caso completo
+          {t.project.readFullCase}
           <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">
             →
           </span>
