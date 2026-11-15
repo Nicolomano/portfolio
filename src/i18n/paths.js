@@ -1,7 +1,7 @@
 // Rutas por idioma. Sin dependencias de React: también las usa
 // scripts/sitemap.mjs al hacer el build.
 
-export const SITE_URL = "https://nicolasromano.vercel.app";
+export const SITE_URL = "https://www.nicolasromano.dev";
 
 // Español en la raíz; inglés con el prefijo /en.
 export const paths = {

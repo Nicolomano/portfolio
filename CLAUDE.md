@@ -1,7 +1,7 @@
 # Contexto del proyecto
 
 Portfolio de **Nicolás Romano**, desarrollador full-stack MERN junior en Buenos Aires.
-Repo: https://github.com/Nicolomano/portfolio · Publicado en https://nicolasromano.vercel.app (Vercel, deploy automático al hacer push a `main`).
+Repo: https://github.com/Nicolomano/portfolio · Publicado en https://www.nicolasromano.dev (Vercel, deploy automático al hacer push a `main`; `nicolasromano.dev` redirige a `www`). La dirección vieja `nicolasromano.vercel.app` ya no funciona (404).
 
 Este archivo existe para retomar el trabajo desde otra PC o en otra sesión. Leelo entero antes de tocar algo.
 
@@ -72,11 +72,11 @@ scripts/        sitemap.mjs (genera public/sitemap.xml antes del build)
 
 ## Pendientes
 
-- [x] Deploy en https://nicolasromano.vercel.app. `og:url` y `og:image` absolutos en `index.html`.
+- [x] Deploy en https://www.nicolasromano.dev (antes nicolasromano.vercel.app, hoy 404). `og:url` y `og:image` absolutos en `index.html`.
 - [x] SEO: `robots.txt`, `sitemap.xml` generado en cada build por `scripts/sitemap.mjs` (rutas de `src/i18n/paths.js` + proyectos), y canónica + hreflang por página (`hooks/useAlternateLinks.js`). Si cambia el dominio, cambiar `SITE_URL` en `src/i18n/paths.js`, `index.html` y `public/robots.txt`.
 - [x] Link del portfolio en los dos CVs (primero en la línea de contacto).
 - [x] `public/og.png`: captura del hero en 1200×630 (viewport 1270 px reescalado, sin el párrafo, los botones ni la franja de datos). Si cambia el hero, regenerarlo.
-- [x] CVs en `public/cv/`.
+- [x] CVs en `public/cv/` (última versión de Nicolás: con nicolasromano.dev y el perfil "me formé en desarrollo web y llevé esa formación a producción").
 - [x] Capturas del catálogo v1 (`catalogo-basico-{listado,detalle,kit}.jpg`), sacadas con puppeteer de catalogoayp.vercel.app con scroll para no mostrar el banner de "fuera de servicio".
 - [x] catalogoayp.vercel.app se va a dar de baja (ya muestra un banner de "fuera de servicio"): el v1 quedó con `liveUrl: null`, etiqueta "Archivado" y botón a la v2 (campo `successor`).
 - [x] Capturas de la PWA: 6 JPG de celular en `public/img/pwa-stock-*.jpg` (buscar, ajuste, carga, movimiento, faltantes, traer). `video: null`. Muestran nombres de usuario de empleados (no de clientes).
