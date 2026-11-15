@@ -82,7 +82,7 @@ function Facts({ showcase }) {
             className="border-b border-rule py-8 last:border-b-0 sm:border-r sm:border-b-0 sm:border-ink sm:px-6 sm:first:pl-0 sm:last:border-r-0"
           >
             {/* En 3 columnas el tamaño escala con el ancho de pantalla para no desbordar. */}
-            <p className="text-[6rem] leading-[0.8] font-black tracking-[-0.02em] font-stretch-extra-condensed sm:text-[clamp(4rem,10vw,10rem)]">
+            <p className="text-[6rem] leading-[0.8] font-black tracking-[-0.02em] text-wine font-stretch-extra-condensed sm:text-[clamp(4rem,10vw,10rem)]">
               {value}
             </p>
             <p className="label mt-3">{label}</p>
@@ -112,7 +112,7 @@ function Evolution() {
             </p>
             <p
               aria-hidden="true"
-              className="mt-4 text-7xl leading-none font-black font-stretch-extra-condensed"
+              className="mt-4 text-7xl leading-none font-black text-wine font-stretch-extra-condensed"
             >
               v{i + 1}
             </p>

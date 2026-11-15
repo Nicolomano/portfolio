@@ -28,6 +28,7 @@ Este archivo existe para retomar el trabajo desde otra PC o en otra sesión. Lee
 
 - Fondo papel `#F4F2EE`, tinta `#141414`, líneas de 1px. Tokens en `src/index.css` (`@theme`).
 - Un solo acento: naranja `#FF4F00` (`accent`) solo en superficies chicas (CTA en hover, punto de estado, subrayados). Para **texto** usar `accent-ink` `#B83800` (el naranja puro no pasa AA sobre papel).
+- Segunda tinta: bordó `#5F1723` (`wine`, 11,5:1 sobre papel). Va en el bloque "NR" del logo, los números grandes (métricas, número principal de cada caso, v1/v2/v3, 404) y la selección de texto. El naranja sigue siendo lo interactivo (hovers, subrayados, números de sección, punto de estado); no usar el bordó para eso ni en superficies grandes.
 - Tipografía: Archivo variable (títulos 800/900, tracking negativo; números grandes con `font-stretch-extra-condensed`) + JetBrains Mono en mayúsculas para etiquetas (clase `.label`).
 - Layout asimétrico alineado a la izquierda, secciones numeradas (01, 02…), fichas clave:valor (`SpecList`).
 - **Prohibido:** gradientes, glassmorphism/backdrop-blur, glow, sombras difusas, cards `rounded-2xl` iguales, emojis, íconos genéricos, pastillas de colores por tecnología, paleta slate/violeta/índigo, barras de skills, typewriter, partículas, animaciones en todo.

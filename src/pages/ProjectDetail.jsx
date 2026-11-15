@@ -193,7 +193,7 @@ export default function ProjectDetail() {
           <Reveal className="mb-12 grid gap-8 sm:grid-cols-2">
             {project.metrics.map(({ value, label }) => (
               <p key={label}>
-                <span className="block text-[5rem] leading-[0.8] font-black tracking-[-0.02em] font-stretch-extra-condensed sm:text-[6.5rem] xl:text-[7.5rem]">
+                <span className="block text-[5rem] leading-[0.8] font-black tracking-[-0.02em] text-wine font-stretch-extra-condensed sm:text-[6.5rem] xl:text-[7.5rem]">
                   {value}
                 </span>
                 <span className="label mt-2 block">{label}</span>

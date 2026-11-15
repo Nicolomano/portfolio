@@ -49,7 +49,7 @@ export default function ProjectCard({ project }) {
 
         <div className="mt-8 grid gap-6 border-t border-ink pt-4 sm:grid-cols-[auto_1fr] sm:items-end sm:gap-10">
           <p>
-            <span className="block text-[5.5rem] leading-[0.8] font-black tracking-[-0.02em] font-stretch-extra-condensed sm:text-[8rem]">
+            <span className="block text-[5.5rem] leading-[0.8] font-black tracking-[-0.02em] text-wine font-stretch-extra-condensed sm:text-[8rem]">
               {mainMetric.value}
             </span>
             <span className="label mt-2 block">{mainMetric.label}</span>

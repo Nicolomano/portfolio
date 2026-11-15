@@ -15,7 +15,7 @@ export default function NotFound() {
     <section className="py-10 lg:py-16">
       <p
         aria-hidden="true"
-        className="text-[10rem] leading-[0.8] font-black tracking-[-0.03em] font-stretch-extra-condensed lg:text-[16rem]"
+        className="text-[10rem] leading-[0.8] font-black tracking-[-0.03em] text-wine font-stretch-extra-condensed lg:text-[16rem]"
       >
         404
       </p>

@@ -27,7 +27,7 @@ export default function Navbar() {
         className="shell flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-3"
       >
         <NavLink to={path.home} end className="label flex items-center gap-2.5 font-bold">
-          <span aria-hidden="true" className="bg-ink px-1.5 py-0.5 text-paper">
+          <span aria-hidden="true" className="bg-wine px-1.5 py-0.5 text-paper">
             NR
           </span>
           Nicolás Romano

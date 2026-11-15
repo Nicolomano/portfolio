@@ -4,7 +4,7 @@
 @import "@fontsource/jetbrains-mono/700.css";
 @import "tailwindcss";
 
-/* Tokens de diseño: papel, tinta y un solo acento. */
+/* Tokens de diseño: papel, tinta, un acento (naranja) y una segunda tinta (bordó). */
 @theme {
   --color-paper: #f4f2ee;
   --color-paper-dark: #e8e5df;
@@ -13,6 +13,7 @@
   --color-rule: #cfcac1; /* líneas internas más suaves que la tinta */
   --color-accent: #ff4f00; /* solo superficies chicas, nunca texto chico */
   --color-accent-ink: #b83800; /* versión para texto: 5.2:1 sobre paper (AA) */
+  --color-wine: #5f1723; /* segunda tinta: logo, números grandes y selección. 11.5:1 sobre paper */
 
   --font-sans: "Archivo Variable", "Archivo", "Arial Narrow", Arial, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
@@ -37,8 +38,8 @@
   }
 
   ::selection {
-    background: var(--color-accent);
-    color: var(--color-ink);
+    background: var(--color-wine);
+    color: var(--color-paper);
   }
 
   :focus-visible {
