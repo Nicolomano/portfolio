@@ -95,7 +95,7 @@ const es = {
     eyebrow: "Sobre mí / Perfil",
     title: "Sobre mí",
     intro:
-      "Aprendí a programar resolviendo problemas del negocio donde trabajo. Desde 2021 estoy en atención al cliente en A&P Refrigeración, y ahí vi los problemas de cerca: consultas repetidas por WhatsApp, técnicos que no encontraban un repuesto porque el sistema lo tenía abreviado, stock que solo se podía revisar desde una computadora. Antes fui operario CNC.",
+      "Me formé en desarrollo web con los cursos de JavaScript, React y Back-End de Coderhouse, y sigo estudiando en la UTN y en Digital House. Desde 2021 trabajo en atención al cliente en A&P Refrigeración, y ahí vi dónde poner en práctica lo que estaba aprendiendo: consultas repetidas por WhatsApp, técnicos que no encontraban un repuesto porque el sistema lo tenía abreviado, stock que solo se podía revisar desde una computadora. Antes fui operario CNC.",
     path: "Recorrido",
     education: "Formación",
     table: { school: "Institución", program: "Programa", year: "Año" },
@@ -228,7 +228,7 @@ const en = {
     eyebrow: "About / Profile",
     title: "About me",
     intro:
-      "I learned to code by solving problems at the business where I work. I've been in customer service at A&P Refrigeración since 2021, and that's where I saw the problems up close: the same questions over and over on WhatsApp, technicians who couldn't find a part because the system listed it under an abbreviation, stock that could only be checked from a computer. Before that, I was a CNC operator.",
+      "I trained in web development through Coderhouse's JavaScript, React and Back-End courses, and I'm still studying at UTN and Digital House. I've worked in customer service at A&P Refrigeración since 2021, and that's where I saw the chance to put what I was learning into practice: the same questions over and over on WhatsApp, technicians who couldn't find a part because the system listed it under an abbreviation, stock that could only be checked from a computer. Before that, I was a CNC operator.",
     path: "Experience",
     education: "Education",
     table: { school: "Institution", program: "Program", year: "Year" },

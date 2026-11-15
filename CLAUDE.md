@@ -10,7 +10,7 @@ Este archivo existe para retomar el trabajo desde otra PC o en otra sesión. Lee
 - Trabaja desde 2021 en atención al cliente en **A&P Refrigeración**, una **casa de repuestos de refrigeración** (NO es mayorista: no usar esa palabra). Antes fue operario CNC.
 - Estudia la Tecnicatura en Programación (UTN) y la certificación Back-End (Digital House). Coderhouse: JavaScript 2023, React 2023, Back-End 2024. Inglés B1.
 - Busca empleo en relación de dependencia: full time, presencial/remoto/híbrido, movilidad propia.
-- Mensaje central: **tiene software en producción en un negocio real**. El hero dice "Hice el e-commerce y la app de stock de la casa de repuestos donde trabajo." La historia de "aprendí a programar resolviendo problemas del negocio" va en Sobre mí, no en el hero (decisión tomada: no volver a ponerla en grande).
+- Mensaje central: **tiene software en producción en un negocio real**. El hero dice "Hice el e-commerce y la app de stock de la casa de repuestos donde trabajo." La historia va en Sobre mí, no en el hero (decisión tomada: no volver a ponerla en grande). Versión correcta, igual que en el CV: **se formó en desarrollo web (Coderhouse, y sigue en UTN y Digital House) y en el trabajo vio la oportunidad de ponerlo en práctica.** No decir que "aprendió a programar resolviendo problemas del negocio".
 
 ## Proyectos (src/data/projects.js, orden cronológico = numeración)
 
